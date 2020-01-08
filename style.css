@@ -24,14 +24,15 @@ body {
     border-width: 1px;
     border-top-width: 0px;
     border-left-width: 0px;
-    background-color: white;
+   /* background-color: white;*/
 }
 
+/*
 .pintado {
     display: inline-block;
     border: solid;
     border-width: 1px;
     border-top-width: 0px;
     border-left-width: 0px;
-    background-color: black;
-}
+    background-color: var(--bgcolor);
+}*/
