@@ -2,6 +2,7 @@ var tablero;
 var pintar;
 var color;
 var pincel;
+var tamano;
 var pintura = false;
 
 window.onload = function () {
@@ -15,11 +16,21 @@ window.onload = function () {
     pintar.addEventListener("click", crearTablero);
     borrar.addEventListener("click", borrarTablero);
     clear.addEventListener("click", clearBoard);
-    
+
 }
 
 function clearBoard() {
-    /* estamos trabajando en ello */
+
+    let clear = document.getElementsByClassName('celda');
+    console.log("XXX: " + clear);
+    for (var i = 0; i < clear.length; i++) {
+
+        clear[i].setAttribute("style", "width:" + ((750 - tamano * 2) / tamano) + "; height:" + ((750 - tamano * 2) / tamano) + "; background-color: white");
+
+    }
+
+
+
 }
 
 function activarPincel() {
@@ -35,7 +46,7 @@ function borrarTablero() {
 }
 
 function crearTablero() {
-    let tamano = prompt("Tamaño del lienzo (max. 100");
+    tamano = prompt("Tamaño del lienzo (max. 100");
 
     if (tamano < 1) {
         alert("Tamaño mínimo 1");
@@ -55,31 +66,21 @@ function crearTablero() {
         tablero.appendChild(fila);
 
         for (let y = 0; y < tamano; y++) {
-         //   let currentVal = 'white';
 
             var celda = document.createElement("div");
             celda.setAttribute("id", "celda-" + x + "-" + y);
             celda.setAttribute("class", "celda");
-            celda.setAttribute("value", "white");
-            celda.setAttribute("style", "width:" + ((750 - tamano * 2) / tamano) + "; height:" + ((750 - tamano * 2) / tamano) + "; background-color:" + celda.getAttribute('value'));
-
-
+            celda.setAttribute("style", "width:" + ((750 - tamano * 2) / tamano) + "; height:" + ((750 - tamano * 2) / tamano) + "; background-color: white");
 
             celda.addEventListener("mouseover", function () {
-                celda.setAttribute("value", color.value);
-
                 if (pintura) {
-                    this.setAttribute("style", "width:" + ((750 - tamano * 2) / tamano) + "; height:" + ((750 - tamano * 2) / tamano) + "; background-color:" + celda.getAttribute('value'));
+                    this.setAttribute("style", "width:" + ((750 - tamano * 2) / tamano) + "; height:" + ((750 - tamano * 2) / tamano) + "; background-color:" + color.value);
                 }
-
             });
             fila.appendChild(celda);
         }
 
-
-
     }
-
 
     function newFunction() {
         let a = celda.value;
